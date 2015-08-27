@@ -1,7 +1,16 @@
 import React from 'react';
+import d3 from 'd3';
 import App from './components/App';
 import react2tree from 'react2tree';
+import { tree } from 'd3-state-visualizer';
 
-const root = React.render(<App/>, document.getElementById('root'));
+const hierarchy = React.render(<App/>, document.createElement('div'));
 
-console.log(react2tree(root));
+const initialize = tree();
+
+const render = initialize(d3, document.getElementById('root'), {
+  tree: react2tree(hierarchy),
+  heightBetweenNodesCoeff: 1.5
+});
+
+render();

@@ -2,12 +2,12 @@ import React from 'react';
 
 class Box1 extends React.Component {
   render() {
-    return <span>box1</span>
+    return <span>box1</span>;
   }
 }
 class Box2 extends React.Component {
   render() {
-    return <span>box2</span>
+    return <span>box2</span>;
   }
 }
 class Parent extends React.Component {
@@ -17,12 +17,12 @@ class Parent extends React.Component {
         <Box1/>
         <Box2/>
       </div>
-    )
+    );
   }
 }
 class App extends React.Component {
   render() {
-    return <Parent/>
+    return <Parent/>;
   }
 }
 
