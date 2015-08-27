@@ -7,10 +7,10 @@ const {
   isDOMComponent,
   getRenderedChildOfCompositeComponent,
   findRenderedComponentWithType
-  }  = addons.TestUtils;
+  } = addons.TestUtils;
 
 export default function react2tree(app, name = 'tree') {
-  var tree = {
+  let tree = {
     name,
     children: []
   };
@@ -19,7 +19,9 @@ export default function react2tree(app, name = 'tree') {
     return tree;
   }
 
+  /*eslint-disable*/
   traverse(app, tree);
+  /*eslint-enable*/
 
   function traverse(c, node) {
     if (isDOMComponent(c)) {
@@ -31,15 +33,15 @@ export default function react2tree(app, name = 'tree') {
       children: []
     });
 
-    var ccc = getRenderedChildOfCompositeComponent(c);
+    const ccc = getRenderedChildOfCompositeComponent(c);
 
     if (isDOMComponent(ccc)) {
-      React.Children.map(ccc.props.children, function(child, key, index) {
+      React.Children.forEach(ccc.props.children, function traverseCompositeChildrenOf(child) {
         if (child.type) {
-          var cccc = findRenderedComponentWithType(ccc, child.type);
+          const cccc = findRenderedComponentWithType(ccc, child.type);
           traverse(cccc, getNode(node, c.constructor.name));
         }
-      })
+      });
     } else {
       traverse(ccc, getNode(node, c.constructor.name));
     }

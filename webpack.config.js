@@ -29,7 +29,7 @@ module.exports = {
     }]
   },
   output: {
-    library: 'd3-state-visualizer',
+    library: 'react2tree',
     libraryTarget: 'umd'
   },
   plugins: plugins,
