@@ -1,5 +1,4 @@
-import React from 'react';
-import { addons } from 'react/addons';
+import React from 'react/addons';
 import { getNode } from './utils';
 
 const {
@@ -7,7 +6,7 @@ const {
   isDOMComponent,
   getRenderedChildOfCompositeComponent,
   findRenderedComponentWithType
-  } = addons.TestUtils;
+  } = React.addons.TestUtils;
 
 export default function react2tree(app, name = 'tree') {
   let tree = {
