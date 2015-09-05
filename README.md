@@ -10,6 +10,7 @@ Transform React component hierarchies to plain JavaScript tree structures.
 # Usage
 
 ```javascript
+import React from 'react';
 import react2tree from 'react2tree';
 
 const myApp = React.render(<App/>, document.createElement('root'));
