@@ -3,10 +3,10 @@ export function visit(parent, visitFn, childrenFn) {
 
   visitFn(parent);
 
-  let children = childrenFn(parent);
+  const children = childrenFn(parent);
 
   if (children) {
-    let count = children.length;
+    const count = children.length;
 
     for (let i = 0; i < count; i++) {
       visit(children[i], visitFn, childrenFn);

@@ -1,16 +1,16 @@
-import React from 'react';
+import React, { Component } from 'react';
 
-class Box1 extends React.Component {
+class Box1 extends Component {
   render() {
     return <span>box1</span>;
   }
 }
-class Box2 extends React.Component {
+class Box2 extends Component {
   render() {
     return <span>box2</span>;
   }
 }
-class Parent extends React.Component {
+class Parent extends Component {
   render() {
     return (
       <div>
@@ -20,7 +20,7 @@ class Parent extends React.Component {
     );
   }
 }
-class App extends React.Component {
+class App extends Component {
   render() {
     return <Parent/>;
   }

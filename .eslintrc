@@ -10,7 +10,10 @@
     "react/jsx-uses-vars": 2,
     "react/react-in-jsx-scope": 2,
     "no-unused-vars": 0,
-    "no-nested-ternary": 0
+    "no-nested-ternary": 0,
+    "comma-dangle": 0,
+    "id-length": 0,
+    "react/no-multi-comp": 0
   },
   "plugins": [
     "react"

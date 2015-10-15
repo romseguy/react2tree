@@ -1,15 +1,13 @@
-import React from 'react/addons';
-import { getNode } from './utils';
-
-const {
+import React from 'react';
+import {
   isCompositeComponent,
   isDOMComponent,
-  getRenderedChildOfCompositeComponent,
-  findRenderedComponentWithType
-  } = React.addons.TestUtils;
+  getRenderedChildOfCompositeComponent
+} from 'react-addons-test-utils';
+import { getNode } from './utils';
 
 export default function react2tree(app, name = 'tree') {
-  let tree = {
+  const tree = {
     name,
     children: []
   };
@@ -23,22 +21,23 @@ export default function react2tree(app, name = 'tree') {
   /*eslint-enable*/
 
   function traverse(c, node) {
-    if (isDOMComponent(c)) {
+    if (!c || isDOMComponent(c)) {
       return;
     }
 
+    const newNodeName = typeof c === 'function' ? c.name : c.constructor.name;
+
     node.children.push({
-      name: c.constructor.name,
+      name: newNodeName,
       children: []
     });
 
     const ccc = getRenderedChildOfCompositeComponent(c);
 
     if (isDOMComponent(ccc)) {
-      React.Children.forEach(ccc.props.children, function traverseCompositeChildrenOf(child) {
+      React.Children.forEach(ccc.props.children, function traverseChildWithNode(child) {
         if (child.type) {
-          const cccc = findRenderedComponentWithType(ccc, child.type);
-          traverse(cccc, getNode(node, c.constructor.name));
+          traverse(child.type, getNode(node, newNodeName));
         }
       });
     } else {
