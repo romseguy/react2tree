@@ -1,6 +1,6 @@
 {
   "name": "react2tree",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Utility for mapping React component hierarchies to trees",
   "main": "lib/index.js",
   "scripts": {
